@@ -13,8 +13,8 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question add(String question, String answer) {
         Question addedQuestion = new Question(question, answer);
-        questionMap.put(question, addedQuestion);
-        return addedQuestion;
+        questionMap.putIfAbsent(question, addedQuestion);
+        return questionMap.get(question);
     }
 
     @Override

@@ -20,12 +20,12 @@ public class ExaminerServiceImpl implements ExaminerService {
 
 
     @Override
-    public Collection<Question> getQuestions(int count) {
-        if (count > questionService.getSize()) {
-            throw new BadRequestException("incorrect count");
+    public Collection<Question> getQuestions(int amount) {
+        if (amount > questionService.getSize()) {
+            throw new BadRequestException("incorrect amount");
         }
         Set<Question> questionSet = new HashSet<>();
-        while (questionSet.size() < count) {
+        while (questionSet.size() < amount) {
             questionSet.add(questionService.getRandomQuestion());
         }
         return questionSet;
